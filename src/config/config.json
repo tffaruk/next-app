@@ -1,0 +1,33 @@
+{
+  "site": {
+    "title": "Next Tailwind Boilerplate",
+    "base_url": "",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "",
+    "logo_darkmode": "",
+    "logo_width": "200",
+    "logo_height": "40",
+    "logo_text": "Next Boilerplate"
+  },
+
+  "settings": {
+    "theme_switcher": true,
+    "default_theme": "system",
+    "pagination": 2,
+    "summary_length": 200,
+    "blog_folder": "posts"
+  },
+
+  "params": {
+    "tag_manager_id": "",
+    "copyright": "Copyright © 2022 Next Boilerplate"
+  },
+
+  "metadata": {
+    "meta_author": "Themefisher",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "Next Boilerplate"
+  }
+}

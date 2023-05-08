@@ -1,0 +1,137 @@
+// section style
+.section {
+  @apply py-16;
+}
+
+// container
+.container {
+  @apply mx-auto max-w-[1000px] px-4;
+}
+
+// form style
+.form-inputs * {
+  @apply mb-5 leading-10;
+}
+
+// social icon style
+.social-icons {
+  @apply space-x-4;
+  li {
+    @apply inline-block;
+    a {
+      @apply block h-9 w-9 rounded-full border bg-primary text-center text-white;
+      svg {
+        @apply m-auto h-9;
+      }
+    }
+  }
+}
+
+// notice
+.notice {
+  .notice-body {
+    p {
+      @apply my-0 text-text dark:text-darkmode-light;
+    }
+  }
+
+  &.note {
+    .notice-head {
+      @apply bg-[#7fb6d9] dark:bg-[#6ab0de];
+    }
+    .notice-body {
+      @apply bg-[#7fb6d9]/25 dark:bg-[#6ab0de]/25;
+    }
+  }
+
+  &.tip {
+    .notice-head {
+      @apply bg-[#73e273] dark:bg-[#78c578];
+    }
+    .notice-body {
+      @apply bg-[#73e273]/25 dark:bg-[#78c578]/25;
+    }
+  }
+
+  &.info {
+    .notice-head {
+      @apply bg-[#ffc392] dark:bg-[#f0b37e];
+    }
+    .notice-body {
+      @apply bg-[#f0b37e]/25 dark:bg-[#ffc392]/25;
+    }
+  }
+
+  &.warning {
+    .notice-head {
+      @apply bg-[#ff918c] dark:bg-[#e06f6c];
+    }
+    .notice-body {
+      @apply bg-[#ff918c]/25 dark:bg-[#e06f6c]/25;
+    }
+  }
+}
+
+.active-tab {
+  @apply bg-theme-light dark:bg-theme-dark;
+}
+
+// form style
+.form-input,
+.form-textarea {
+  @apply border-border focus:border-primary focus:ring-transparent;
+}
+
+// tooltip
+.tooltip {
+  @apply relative inline-block cursor-pointer;
+  &-label {
+    @apply pointer-events-none invisible absolute left-1/2 bottom-[calc(100%+5px)] z-50 w-max -translate-x-1/2 rounded bg-primary px-3 py-1 text-center text-sm text-white opacity-0 transition;
+    &::after {
+      @apply absolute top-full left-1/2 -translate-x-1/2 border-4 border-solid border-transparent border-t-primary content-[""];
+    }
+  }
+  &:hover .tooltip-label {
+    @apply visible opacity-100;
+  }
+  &-bottom {
+    .tooltip-label {
+      @apply bottom-[unset] top-[calc(100%+5px)];
+      &::after {
+        @apply top-[unset] bottom-full border-t-transparent border-b-primary;
+      }
+    }
+  }
+}
+
+// tooltip static which is not generated from js
+.tooltip-static {
+  @extend .tooltip;
+  &-label {
+    @extend .tooltip-label;
+  }
+  &-bottom {
+    @extend .tooltip-bottom;
+  }
+}
+
+// content style
+.content {
+  @apply prose max-w-none;
+  @apply prose-headings:mt-[.5em] prose-headings:mb-[.9em] prose-headings:font-bold prose-headings:text-dark;
+  @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
+  @apply prose-h2:text-h2-sm md:prose-h2:text-h2;
+  @apply prose-h3:text-h3-sm md:prose-h3:text-h3;
+  @apply prose-hr:border-border prose-hr:dark:border-darkmode-border;
+  @apply prose-p:text-base prose-p:text-text prose-p:dark:text-light;
+  @apply prose-blockquote:border-primary prose-blockquote:bg-theme-light prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:dark:bg-theme-dark;
+  @apply prose-code:px-1 prose-code:text-primary;
+  @apply prose-pre:rounded-none;
+  @apply prose-strong:text-dark prose-strong:dark:text-light;
+  @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline;
+  @apply prose-li:text-text prose-li:dark:text-light;
+  @apply prose-table:overflow-hidden prose-table:border prose-table:border-border prose-table:dark:border-darkmode-border;
+  @apply prose-thead:border-border prose-thead:bg-theme-light prose-th:py-4 prose-th:px-4 prose-th:text-dark prose-thead:dark:border-darkmode-border prose-thead:dark:bg-theme-dark prose-th:dark:text-light;
+  @apply prose-tr:border-border prose-tr:dark:border-darkmode-border;
+  @apply prose-td:px-3 prose-td:py-4 prose-td:dark:text-light;
+}
