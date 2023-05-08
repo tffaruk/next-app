@@ -1,11 +1,13 @@
-import Logo from "@components/Logo";
-import ThemeSwitcher from "@components/ThemeSwitcher";
-import config from "@config/config.json";
-import menu from "@config/menu.json";
-import SearchModal from "@partials/SearchModal";
+"use client";
+
+import Logo from "@/components/Logo";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
+import config from "@/config/config.json";
+import menu from "@/config/menu.json";
+import SearchModal from "@/partials/SearchModal";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
@@ -14,7 +16,7 @@ const Header = () => {
   const { main } = menu;
 
   // get current path
-  const { asPath } = useRouter();
+  const pathname = usePathname();
 
   // states declaration
   const [navFixed, setNavFixed] = useState(false);
@@ -97,7 +99,7 @@ const Header = () => {
                         <Link
                           href={child.url}
                           className={`nav-dropdown-link block ${
-                            asPath === child.url && "active"
+                            pathname === child.url && "active"
                           }`}
                         >
                           {child.name}
@@ -111,7 +113,7 @@ const Header = () => {
                   <Link
                     href={menu.url}
                     className={`nav-link block ${
-                      asPath === menu.url && "active"
+                      pathname === menu.url && "active"
                     }`}
                   >
                     {menu.name}

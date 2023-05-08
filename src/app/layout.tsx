@@ -1,6 +1,7 @@
 import Footer from "@/partials/Footer";
 import Head from "@/partials/Head";
 import Header from "@/partials/Header";
+import Providers from "@/partials/Providers";
 import "@/styles/main.scss";
 
 export default function RootLayout({
@@ -32,9 +33,11 @@ export default function RootLayout({
       />
 
       <body suppressHydrationWarning={true}>
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

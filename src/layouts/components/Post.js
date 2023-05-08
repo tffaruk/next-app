@@ -1,7 +1,7 @@
-import config from "@config/config.json";
-import ImageFallback from "@layouts/components/ImageFallback";
-import dateFormat from "@lib/utils/dateFormat";
-import { humanize, slugify } from "@lib/utils/textConverter";
+import config from "@/config/config.json";
+import ImageFallback from "@/layouts/components/ImageFallback";
+import dateFormat from "@/lib/utils/dateFormat";
+import { humanize, slugify } from "@/lib/utils/textConverter";
 import Link from "next/link";
 
 const Post = ({ post, authors }) => {

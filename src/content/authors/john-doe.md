@@ -1,7 +1,7 @@
 ---
-title: Wanda Maxima
-email: wandamaxima@gmail.com
-image:
+title: John Doe
+email: johndoe@email.com
+image: "/images/avatar.png"
 description: this is meta description
 social:
   facebook: https://www.facebook.com/

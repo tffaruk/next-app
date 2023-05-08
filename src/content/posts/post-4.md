@@ -1,10 +1,12 @@
 ---
-title: "How to make toys from old Olarpaper"
+title: "How to build an Application with modern Technology"
+meta_title: ""
+description: "this is meta description"
 date: 2022-04-04T05:00:00Z
-image:
-categories: ["art"]
-authors: ["Linda Lanester"]
-tags: ["diy", "toy"]
+image: "/images/image-placeholder.png"
+categories: ["Architecture"]
+author: "John Doe"
+tags: ["silicon", "technology"]
 draft: false
 ---
 

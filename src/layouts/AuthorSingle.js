@@ -1,7 +1,7 @@
-import Social from "@components/Social";
-import Base from "@layouts/Baseof";
-import { markdownify } from "@lib/utils/textConverter";
-import shortcodes from "@shortcodes/all";
+import Social from "@/components/Social";
+import Base from "@/layouts/Baseof";
+import { markdownify } from "@/lib/utils/textConverter";
+import shortcodes from "@/shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 

@@ -1,10 +1,12 @@
 ---
-title: What you need to know about Photography
-date: 2022-04-02T06:00:00+00:00
-image:
-categories: ["fantasy"]
-authors: ["Linda Lanester"]
-tags: ["diy", "toy"]
+title: "How to build an Application with modern Technology"
+meta_title: ""
+description: "this is meta description"
+date: 2022-04-04T05:00:00Z
+image: "/images/image-placeholder.png"
+categories: ["Software"]
+author: "John Doe"
+tags: ["software", "tailwind"]
 draft: false
 ---
 

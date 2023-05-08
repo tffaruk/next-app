@@ -1,10 +1,22 @@
-import ImageFallback from "@components/ImageFallback";
-import config from "@config/config.json";
+import ImageFallback from "@/components/ImageFallback";
+import config from "@/config/config.json";
 import Link from "next/link";
 
-const Logo = ({ src }) => {
+const Logo = ({ src }: { src: string }) => {
   // destructuring items from config object
-  const { logo, logo_width, logo_height, logo_text, title } = config.site;
+  const {
+    logo,
+    logo_width,
+    logo_height,
+    logo_text,
+    title,
+  }: {
+    logo: string;
+    logo_width: any;
+    logo_height: any;
+    logo_text: string;
+    title: string;
+  } = config.site;
 
   return (
     <Link href="/" className="navbar-brand block">
