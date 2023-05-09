@@ -1,4 +1,4 @@
-import { slug } from "github-slugger";
+import { slug } from 'github-slugger';
 import { marked } from "marked";
 
 marked.use({
@@ -7,30 +7,19 @@ marked.use({
 });
 
 // slugify
-export const slugify = (content) => {
+export const slugify = (content: string) => {
   if (!content) return null;
 
   return slug(content);
 };
 
 // markdownify
-export const markdownify = (content, tag, className) => {
-  if (!content) return null;
-
-  const Tag = tag || "span";
-  return (
-    <Tag
-      className={className}
-      dangerouslySetInnerHTML={{
-        __html:
-          tag === "div" ? marked.parse(content) : marked.parseInline(content),
-      }}
-    />
-  );
+export const markdownify = (content: string, div?:boolean) => {
+  return { __html: div? marked.parse(content) : marked.parseInline(content) };
 };
 
 // humanize
-export const humanize = (content) => {
+export const humanize = (content: string) => {
   if (!content) return null;
 
   return content
@@ -42,19 +31,18 @@ export const humanize = (content) => {
 };
 
 // plainify
-export const plainify = (content) => {
+export const plainify = (content: string) => {
   if (!content) return null;
 
-  const mdParsed = marked.parseInline(String(content));
-  const filterBrackets = mdParsed.replace(/<\/?[^>]+(>|$)/gm, "");
+  const filterBrackets = content.replace(/<\/?[^>]+(>|$)/gm, "");
   const filterSpaces = filterBrackets.replace(/[\r\n]\s*[\r\n]/gm, "");
   const stripHTML = htmlEntityDecoder(filterSpaces);
   return stripHTML;
 };
 
 // strip entities for plainify
-const htmlEntityDecoder = (htmlWithEntities) => {
-  let entityList = {
+const htmlEntityDecoder = (htmlWithEntities: string): string => {
+  let entityList: { [key: string]: string } = {
     "&nbsp;": " ",
     "&lt;": "<",
     "&gt;": ">",
@@ -62,9 +50,9 @@ const htmlEntityDecoder = (htmlWithEntities) => {
     "&quot;": '"',
     "&#39;": "'",
   };
-  let htmlWithoutEntities = htmlWithEntities.replace(
+  let htmlWithoutEntities: string = htmlWithEntities.replace(
     /(&amp;|&lt;|&gt;|&quot;|&#39;)/g,
-    (entity) => {
+    (entity: string): string => {
       return entityList[entity];
     }
   );

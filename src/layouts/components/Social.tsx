@@ -30,9 +30,9 @@ import {
   IoLogoWhatsapp,
   IoLogoYoutube,
   IoMail,
-} from "react-icons/io5";
+} from "react-icons/io5/index.js";
 
-const Social = ({ source, className }) => {
+const Social = ({ source, className }: { source: any; className: string }) => {
   const {
     facebook,
     twitter,

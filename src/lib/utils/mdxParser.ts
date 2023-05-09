@@ -3,7 +3,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 // mdx content parser
-const parseMDX = async (content) => {
+const parseMDX = async (content:string) => {
   const options = {
     mdxOptions: {
       rehypePlugins: [rehypeSlug],

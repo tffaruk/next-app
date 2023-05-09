@@ -1,10 +1,12 @@
 import ImageFallback from "@/components/ImageFallback";
 import { getListPage } from "@/lib/contentParser";
 import { markdownify } from "@/lib/utils/textConverter";
+import Testimonials from "@/partials/Testimonials";
 import { FaCheck } from "react-icons/fa/index.js";
 
 const Home = async () => {
   const homepage = await getListPage("_index.md");
+  const testimonial = await getListPage("sections/testimonial.md");
   const { frontmatter } = homepage;
   const { banner, features } = frontmatter;
 
@@ -14,8 +16,14 @@ const Home = async () => {
         <div className="container">
           <div className="row justify-center">
             <div className="mb-16 text-center lg:col-7">
-              {markdownify(banner.title, "h1", "mb-4")}
-              {markdownify(banner.content, "p", "mb-8")}
+              <h1
+                className="mb-4"
+                dangerouslySetInnerHTML={markdownify(banner.title)}
+              />
+              <p
+                className="mb-8"
+                dangerouslySetInnerHTML={markdownify(banner.content)}
+              />
               {banner.button.enable && (
                 <a className="btn btn-primary" href={banner.button.link}>
                   {banner.button.label}
@@ -70,13 +78,19 @@ const Home = async () => {
                     index % 2 !== 0 && "md:order-1"
                   }`}
                 >
-                  {markdownify(feature.title, "h2", "mb-4")}
-                  {markdownify(feature.content, "p", "mb-8 text-lg")}
+                  <h2
+                    className="mb-4"
+                    dangerouslySetInnerHTML={markdownify(feature.title)}
+                  />
+                  <p
+                    className="mb-8 text-lg"
+                    dangerouslySetInnerHTML={markdownify(feature.content)}
+                  />
                   <ul>
                     {feature.bulletpoints.map((bullet: string) => (
                       <li className="relative mb-4 pl-6" key={bullet}>
                         <FaCheck className={"absolute left-0 top-1.5"} />
-                        {markdownify(bullet)}
+                        <span dangerouslySetInnerHTML={markdownify(bullet)} />
                       </li>
                     ))}
                   </ul>
@@ -94,6 +108,8 @@ const Home = async () => {
           </section>
         )
       )}
+
+      <Testimonials data={testimonial} />
     </>
   );
 };

@@ -2,7 +2,7 @@ import ImageFallback from "@/components/ImageFallback";
 import config from "@/config/config.json";
 import Link from "next/link";
 
-const Logo = ({ src }: { src: string }) => {
+const Logo = ({ src }: { src?: string }) => {
   // destructuring items from config object
   const {
     logo,

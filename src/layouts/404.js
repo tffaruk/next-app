@@ -9,7 +9,10 @@ const NotFound = ({ data }) => {
         <div className="flex h-[40vh] items-center justify-center">
           <div className="text-center">
             <h1 className="mb-4">{frontmatter.title}</h1>
-            {markdownify(content, "div", "content")}
+            <div
+              className="content"
+              dangerouslySetInnerHTML={markdownify(content, true)}
+            />
           </div>
         </div>
       </div>
