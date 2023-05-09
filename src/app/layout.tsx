@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning={true}>
       <Head
         title={title}
         meta_title={meta_title}

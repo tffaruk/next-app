@@ -1,12 +1,14 @@
 import ImageFallback from "@/components/ImageFallback";
 import { getListPage } from "@/lib/contentParser";
 import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction";
 import Testimonials from "@/partials/Testimonials";
 import { FaCheck } from "react-icons/fa/index.js";
 
 const Home = async () => {
   const homepage = await getListPage("_index.md");
   const testimonial = await getListPage("sections/testimonial.md");
+  const callToAction = await getListPage("sections/call-to-action.md");
   const { frontmatter } = homepage;
   const { banner, features } = frontmatter;
 
@@ -110,6 +112,7 @@ const Home = async () => {
       )}
 
       <Testimonials data={testimonial} />
+      <CallToAction data={callToAction} />
     </>
   );
 };
