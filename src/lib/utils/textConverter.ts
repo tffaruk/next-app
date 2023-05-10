@@ -8,8 +8,6 @@ marked.use({
 
 // slugify
 export const slugify = (content: string) => {
-  if (!content) return null;
-
   return slug(content);
 };
 
@@ -20,8 +18,6 @@ export const markdownify = (content: string, div?:boolean) => {
 
 // humanize
 export const humanize = (content: string) => {
-  if (!content) return null;
-
   return content
     .replace(/^[\s_]+|[\s_]+$/g, "")
     .replace(/[_\s]+/g, " ")
@@ -32,8 +28,6 @@ export const humanize = (content: string) => {
 
 // plainify
 export const plainify = (content: string) => {
-  if (!content) return null;
-
   const filterBrackets = content.replace(/<\/?[^>]+(>|$)/gm, "");
   const filterSpaces = filterBrackets.replace(/[\r\n]\s*[\r\n]/gm, "");
   const stripHTML = htmlEntityDecoder(filterSpaces);
