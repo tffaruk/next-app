@@ -4,10 +4,9 @@ import Logo from "@/components/Logo";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import config from "@/config/config.json";
 import menu from "@/config/menu.json";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { IoSearch } from "react-icons/io5/index.js";
 
 export interface ChildNavigationLink {
@@ -29,27 +28,6 @@ const Header = () => {
   // get current path
   const pathname = usePathname();
 
-  // states declaration
-  const [navFixed, setNavFixed] = useState(false);
-  const [searchModal, setSearchModal] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  // logo source
-  const { logo, logo_darkmode } = config.site;
-  const { theme, resolvedTheme } = useTheme();
-  useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    const changeNavbarBackground = () => {
-      if (window.pageYOffset >= 1) {
-        setNavFixed(true);
-      } else {
-        setNavFixed(false);
-      }
-    };
-    window.addEventListener("scroll", changeNavbarBackground);
-  });
-
   return (
     <header
       className={`header z-30 ${settings.sticky_header && "sticky top-0"}`}
@@ -57,13 +35,7 @@ const Header = () => {
       <nav className="navbar container">
         {/* logo */}
         <div className="order-0">
-          <Logo
-            src={
-              mounted && (theme === "dark" || resolvedTheme === "dark")
-                ? logo_darkmode
-                : logo
-            }
-          />
+          <Logo />
         </div>
         {/* navbar toggler */}
         <input id="nav-toggle" type="checkbox" className="hidden" />

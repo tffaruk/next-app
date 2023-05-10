@@ -1,6 +1,16 @@
+"use client";
+
 import { useState } from "react";
 
-const Accordion = ({ title, children, className }) => {
+const Accordion = ({
+  title,
+  className,
+  children,
+}: {
+  title: string;
+  className?: string;
+  children: React.ReactNode;
+}) => {
   const [show, setShow] = useState(false);
 
   return (

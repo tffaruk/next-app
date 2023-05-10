@@ -1,11 +1,10 @@
-import parseMDX from "@/lib/utils/mdxParser";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 const contentPath = "src/content";
 
 // get list page data, ex: _index.md
-export const getListPage = async (filePath:string) => {
+export const getListPage = (filePath:string) => {
   const pageData = fs.readFileSync(path.join(contentPath, filePath), "utf-8");
   const pageDataParsed = matter(pageData);
   const notFoundPage = fs.readFileSync(path.join(contentPath, "pages/404.md"), "utf-8");
@@ -19,12 +18,10 @@ export const getListPage = async (filePath:string) => {
     content = notFoundDataParsed.content;
     frontmatter = notFoundDataParsed.data;
   }
-  const mdxContent = await parseMDX(content);
 
   return {
     frontmatter,
     content,
-    mdxContent,
   };
 };
 

@@ -1,4 +1,16 @@
-function Video({ title, width = 500, height = "auto", src, ...rest }) {
+function Video({
+  title,
+  width = 500,
+  height = "auto",
+  src,
+  ...rest
+}: {
+  title: string;
+  width: number;
+  height: number | "auto";
+  src: string;
+  [key: string]: any;
+}) {
   return (
     <video
       className="overflow-hidden"
