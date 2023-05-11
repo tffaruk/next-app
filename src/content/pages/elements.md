@@ -93,39 +93,39 @@ Some text to show that the reference links can follow later.
 
 #### HTML
 
-<Code language="html">
-{`<ul>
+```html
+<ul>
   <li class="nav-item">
     <a class="nav-link" href="/">Home</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="about/">About</a>
   </li>
-</ul>`}
-</Code>
+</ul>
+```
 
 ---
 
 #### CSS
 
-<Code language="css">
-{`img {
+```css
+img {
   vertical-align: middle;
   border: 0;
   max-width: 100%;
   height: auto;
-}`}
-</Code>
+}
+```
 
 ---
 
 #### JavaScript
 
-<Code language="javascript">
-{`window.addEventListener("load", (e) => {
+```javascript
+window.addEventListener("load", (e) => {
   document.querySelector(".preloader").style.display = "none";
-})`}
-</Code>
+})
+```
 
 ---
 

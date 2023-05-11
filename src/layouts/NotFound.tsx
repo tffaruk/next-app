@@ -1,8 +1,8 @@
+import ImageFallback from "@/components/ImageFallback";
 import { markdownify } from "@/lib/utils/textConverter";
 import shortcodes from "@/shortcodes/all";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
-import ImageFallback from "./components/ImageFallback";
 
 const NotFound = ({ data }: { data: any }) => {
   const { frontmatter, content } = data;
