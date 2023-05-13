@@ -1,5 +1,4 @@
 import { getSinglePage } from "@/lib/contentParser";
-import { notFound } from "next/navigation";
 
 export const generateStaticParams = async () => {
   const regularPages = getSinglePage("pages");
@@ -16,9 +15,9 @@ const RegularPages = async ({ params }: { params: any }) => {
     (page) => page.slug === params.regular
   )[0];
 
-  if (!pageData) {
-    notFound();
-  }
+  // if (!pageData) {
+  //   notFound();
+  // }
 
   // const { data } = await allRegulerPages(params.regular);
 
