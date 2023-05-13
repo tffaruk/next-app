@@ -6,8 +6,8 @@ import { notFound } from "next/navigation";
 export const generateStaticParams = async () => {
   const regularPages = getSinglePage("pages");
 
-  return regularPages.map((page) => ({
-    regular: page.slug,
+  return regularPages.map((page: any) => ({
+    regular: !page.frontmatter.layout && page.slug,
   }));
 };
 
@@ -16,7 +16,7 @@ const RegularPages = async ({ params }: { params: { regular: string } }) => {
   const regularData = getSinglePage("pages");
   const NotFoundData = getListPage("pages/404.md");
   const pageData = regularData.filter(
-    (page) => !page.frontmatter.layout && page.slug === params.regular
+    (page) => page.slug === params.regular
   )[0];
 
   if (!pageData) {
