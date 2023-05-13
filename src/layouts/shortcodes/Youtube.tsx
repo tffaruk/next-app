@@ -12,7 +12,14 @@ const Youtube = ({
   title: string;
   [key: string]: any;
 }) => {
-  return <LiteYouTubeEmbed id={id} title={title} {...rest} />;
+  return (
+    <LiteYouTubeEmbed
+      wrapperClass="yt-lite rounded-lg"
+      id={id}
+      title={title}
+      {...rest}
+    />
+  );
 };
 
 export default Youtube;

@@ -1,3 +1,4 @@
+import Default from "@/layouts/Default";
 import { getSinglePage } from "@/lib/contentParser";
 
 export const generateStaticParams = async () => {
@@ -9,19 +10,13 @@ export const generateStaticParams = async () => {
 };
 
 // for all regular pages
-const RegularPages = async ({ params }: { params: any }) => {
+const RegularPages = async ({ params }: { params: { regular: string } }) => {
   const regularData = getSinglePage("pages");
   const pageData = regularData.filter(
     (page) => page.slug === params.regular
   )[0];
 
-  // if (!pageData) {
-  //   notFound();
-  // }
-
-  // const { data } = await allRegulerPages(params.regular);
-
-  return <h1>{pageData?.frontmatter?.title}</h1>;
+  return <Default data={pageData} />;
 };
 
 export default RegularPages;

@@ -13,7 +13,7 @@ function Video({
 }) {
   return (
     <video
-      className="overflow-hidden"
+      className="overflow-hidden rounded-lg"
       width={width}
       height={height}
       controls
