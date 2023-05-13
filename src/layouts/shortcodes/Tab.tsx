@@ -1,5 +1,7 @@
+"use client";
+
 function Tab({ children }: { children: React.ReactNode }) {
-  return <li className="tab-item my-0 hidden">{children}</li>;
+  return <div className="tab-content-panel hidden">{children}</div>;
 }
 
 export default Tab;
