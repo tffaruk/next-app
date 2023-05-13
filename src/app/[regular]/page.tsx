@@ -1,6 +1,13 @@
-import Default from "@/layouts/Default";
 import { getSinglePage } from "@/lib/contentParser";
 import { notFound } from "next/navigation";
+
+export const generateStaticParams = async () => {
+  const regularPages = getSinglePage("pages");
+
+  return regularPages.map((page) => ({
+    regular: page.slug,
+  }));
+};
 
 // for all regular pages
 const RegularPages = async ({ params }: { params: any }) => {
@@ -13,7 +20,9 @@ const RegularPages = async ({ params }: { params: any }) => {
     notFound();
   }
 
-  return <Default data={pageData} />;
+  // const { data } = await allRegulerPages(params.regular);
+
+  return <h1>{pageData?.frontmatter?.title}</h1>;
 };
 
 export default RegularPages;
