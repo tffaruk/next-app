@@ -1,8 +1,7 @@
 import ImageFallback from "@/components/ImageFallback";
 import { markdownify } from "@/lib/utils/textConverter";
-import shortcodes from "@/shortcodes/all";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
+import MDXContent from "./components/MDXContent";
 
 const NotFound = ({ data }: { data: any }) => {
   const { frontmatter, content } = data;
@@ -24,8 +23,7 @@ const NotFound = ({ data }: { data: any }) => {
               dangerouslySetInnerHTML={markdownify(frontmatter.title)}
             />
             <div className="content">
-              {/* @ts-expect-error Async Server Component */}
-              <MDXRemote source={content} components={shortcodes} />
+              <MDXContent content={content} />
             </div>
             <Link href="/" className="btn btn-primary mt-8">
               Back To Home

@@ -1,7 +1,6 @@
 import { markdownify } from "@/lib/utils/textConverter";
-import shortcodes from "@/shortcodes/all";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import PageHeader from "./partials/PageHeader";
+import PageHeader from "@/partials/PageHeader";
+import MDXContent from "./components/MDXContent";
 
 const Default = ({ data }: { data: any }) => {
   const { frontmatter, content } = data;
@@ -17,8 +16,7 @@ const Default = ({ data }: { data: any }) => {
             dangerouslySetInnerHTML={markdownify(title)}
           />
           <div className="content">
-            {/* @ts-expect-error Async Server Component */}
-            <MDXRemote source={content} components={shortcodes} />
+            <MDXContent content={content} />
           </div>
         </div>
       </section>

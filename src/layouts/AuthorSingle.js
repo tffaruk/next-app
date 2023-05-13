@@ -1,8 +1,7 @@
+import MDXContent from "@/components/MDXContent";
 import Social from "@/components/Social";
 import Base from "@/layouts/Baseof";
 import { markdownify } from "@/lib/utils/textConverter";
-import shortcodes from "@/shortcodes/all";
-import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 
 const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
@@ -30,7 +29,7 @@ const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
             {markdownify(title, "h1", "h2 mb-8")}
             <Social source={social} className="social-icons-simple" />
             <div className="content">
-              <MDXRemote {...mdxContent} components={shortcodes} />
+              <MDXContent content={content} />
             </div>
           </div>
         </div>

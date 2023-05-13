@@ -1,8 +1,7 @@
 import ImageFallback from "@/components/ImageFallback";
+import MDXContent from "@/components/MDXContent";
 import { getListPage } from "@/lib/contentParser";
 import { markdownify } from "@/lib/utils/textConverter";
-import shortcodes from "@/shortcodes/all";
-import { MDXRemote } from "next-mdx-remote/rsc";
 
 const About = async () => {
   const data = getListPage("pages/about.md");
@@ -28,8 +27,7 @@ const About = async () => {
               className="h3 mb-6"
             />
             <div className="content">
-              {/* @ts-expect-error Async Server Component */}
-              <MDXRemote source={content} components={shortcodes} />
+              <MDXContent content={content} />
             </div>
           </div>
         </div>
