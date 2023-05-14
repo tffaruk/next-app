@@ -240,7 +240,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 ### Image
 
-![image](/images/flower.jpg)
+![image](/images/image-placeholder.png)
 
 ---
 
