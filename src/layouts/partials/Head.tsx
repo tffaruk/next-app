@@ -4,7 +4,6 @@ import config from "@/config/config.json";
 import theme from "@/config/theme.json";
 import { plainify } from "@/lib/utils/textConverter";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const Head = ({
   title,
@@ -28,14 +27,6 @@ const Head = ({
   // import google font css
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
-  const [fontcss, setFontcss] = useState("");
-  useEffect(() => {
-    fetch(
-      `https://fonts.googleapis.com/css2?family=${pf}${
-        sf ? "&family=" + sf : ""
-      }&display=swap`
-    ).then((res) => res.text().then((css) => setFontcss(css)));
-  }, [pf, sf]);
 
   return (
     <head>
@@ -133,7 +124,12 @@ const Head = ({
         href="https://fonts.gstatic.com"
         crossOrigin="anonymous"
       />
-      <style>{fontcss}</style>
+      <link
+        href={`https://fonts.googleapis.com/css2?family=${pf}${
+          sf ? "&family=" + sf : ""
+        }&display=swap`}
+        rel="stylesheet"
+      />
     </head>
   );
 };
