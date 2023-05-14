@@ -6,12 +6,11 @@ import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import PageHeader from "@/partials/PageHeader";
 import PostSidebar from "@/partials/PostSidebar";
-const { blog_folder } = config.settings;
+const { blog_folder, pagination } = config.settings;
 
 export const generateStaticParams = () => {
-  const getAllSlug = getSinglePage(blog_folder);
-  const allSlug = getAllSlug.map((item) => item.slug);
-  const { pagination } = config.settings;
+  const allPost = getSinglePage(blog_folder);
+  const allSlug = allPost.map((item) => item.slug);
   const totalPages = Math.ceil(allSlug.length / pagination);
   let paths = [];
 
@@ -34,11 +33,11 @@ const Posts = ({ params }: { params: { page: string } }) => {
   const categories = getTaxonomy(blog_folder, "categories");
   const tags = getTaxonomy(blog_folder, "tags");
   const sortedPosts = sortByDate(posts);
-  const totalPages = Math.ceil(posts.length / config.settings.pagination);
+  const totalPages = Math.ceil(posts.length / pagination);
   const currentPage =
     params.page && !isNaN(Number(params.page)) ? Number(params.page) : 1;
-  const indexOfLastPost = currentPage * config.settings.pagination;
-  const indexOfFirstPost = indexOfLastPost - config.settings.pagination;
+  const indexOfLastPost = currentPage * pagination;
+  const indexOfFirstPost = indexOfLastPost - pagination;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (

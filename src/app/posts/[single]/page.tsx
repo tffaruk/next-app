@@ -16,7 +16,6 @@ import {
   FaRegUserCircle,
 } from "react-icons/fa/index.js";
 const { blog_folder } = config.settings;
-const { disqus } = config;
 
 export const generateStaticParams = () => {
   const posts = getSinglePage(blog_folder);

@@ -1,9 +1,10 @@
-import NotFound from "@/layouts/NotFound";
-import { getListPage } from "@/lib/contentParser";
-
 const PageNotFound = () => {
-  const data = getListPage("pages/404.md");
-  return <NotFound data={data} />;
+  return (
+    <>
+      <h2>Not Found</h2>
+      <p>Could not find requested resource</p>
+    </>
+  );
 };
 
 export default PageNotFound;
