@@ -7,17 +7,8 @@ const contentPath = "src/content";
 export const getListPage = (filePath:string) => {
   const pageData = fs.readFileSync(path.join(contentPath, filePath), "utf-8");
   const pageDataParsed = matter(pageData);
-  const notFoundPage = fs.readFileSync(path.join(contentPath, "pages/404.md"), "utf-8");
-  const notFoundDataParsed = matter(notFoundPage);
-  let frontmatter, content;
-
-  if (pageDataParsed) {
-    content = pageDataParsed.content;
-    frontmatter = pageDataParsed.data;
-  } else {
-    content = notFoundDataParsed.content;
-    frontmatter = notFoundDataParsed.data;
-  }
+  const content = pageDataParsed.content;
+  const frontmatter = pageDataParsed.data;
 
   return {
     frontmatter,
@@ -45,7 +36,7 @@ export const getSinglePage = (folder:string) => {
 
   const publishedPages = singlePages.filter(
     (page) =>
-      !page.frontmatter.draft && page.frontmatter.layout !== "404" && page
+      !page.frontmatter.draft && page
   );
   const filterByDate = publishedPages.filter(
     (page) => new Date(page.frontmatter.date || new Date()) <= new Date()
