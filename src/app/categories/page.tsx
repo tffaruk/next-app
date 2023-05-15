@@ -2,6 +2,7 @@ import config from "@/config/config.json";
 import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser";
 import { humanize } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader";
+import SeoMeta from "@/partials/SeoMeta";
 
 const Categories = () => {
   const { blog_folder } = config.settings;
@@ -10,6 +11,7 @@ const Categories = () => {
 
   return (
     <>
+      <SeoMeta title={"Categories"} />
       <PageHeader title={"Categories"} />
       <section className="section">
         <div className="container text-center">

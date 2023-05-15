@@ -5,16 +5,15 @@ import Social from "@/components/Social";
 import config from "@/config/config.json";
 import { getSinglePage } from "@/lib/contentParser";
 import { slugify } from "@/lib/utils/textConverter";
+import SeoMeta from "@/partials/SeoMeta";
 
 export const generateStaticParams = () => {
   const authors = getSinglePage("authors");
 
   const paths = authors.map((author) => ({
-    params: {
-      single: author.slug,
-    },
-    props: { author },
+    single: author.slug,
   }));
+
   return paths;
 };
 
@@ -31,6 +30,12 @@ const AuthorSingle = ({ params }: { params: { single: string } }) => {
 
   return (
     <>
+      <SeoMeta
+        title={title}
+        meta_title={meta_title}
+        description={description}
+        image={image}
+      />
       <section className="section-sm pb-0">
         <div className="container">
           <div className="row justify-center border-b border-border pb-14 dark:border-darkmode-border">

@@ -2,6 +2,7 @@ import config from "@/config/config.json";
 import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser";
 import { humanize } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader";
+import SeoMeta from "@/partials/SeoMeta";
 
 const tags = () => {
   const { blog_folder } = config.settings;
@@ -10,7 +11,8 @@ const tags = () => {
 
   return (
     <>
-      <PageHeader title={"tags"} />
+      <SeoMeta title={"Tags"} />
+      <PageHeader title={"Tags"} />
       <section className="section">
         <div className="container text-center">
           <ul className="space-x-4">

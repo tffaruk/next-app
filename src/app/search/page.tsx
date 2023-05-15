@@ -1,6 +1,7 @@
 import config from "@/config/config.json";
 import Search from "@/layouts/Search";
 import { getSinglePage } from "@/lib/contentParser";
+import SeoMeta from "@/partials/SeoMeta";
 
 const { blog_folder } = config.settings;
 
@@ -15,7 +16,12 @@ const searchList = posts.map((item) => ({
 }));
 
 const SearchPage = () => {
-  return <Search searchList={searchList} />;
+  return (
+    <>
+      <SeoMeta title={"Search"} />
+      <Search searchList={searchList} />
+    </>
+  );
 };
 
 export default SearchPage;

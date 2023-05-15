@@ -21,10 +21,9 @@ export const generateStaticParams = () => {
   const posts = getSinglePage(blog_folder);
 
   const paths = posts.map((post) => ({
-    params: {
-      single: post.slug,
-    },
+    single: post.slug,
   }));
+
   return paths;
 };
 

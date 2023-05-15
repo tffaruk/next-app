@@ -1,8 +1,8 @@
 "use client";
 
-import ImageFallback from "@/components/ImageFallback";
 import config from "@/config/config.json";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -37,7 +37,7 @@ const Logo = ({ src }: { src?: string }) => {
   return (
     <Link href="/" className="navbar-brand block">
       {logoPath ? (
-        <ImageFallback
+        <Image
           width={logo_width.replace("px", "") * 2}
           height={logo_height.replace("px", "") * 2}
           src={logoPath}

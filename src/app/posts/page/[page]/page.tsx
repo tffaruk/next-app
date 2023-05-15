@@ -16,9 +16,7 @@ export const generateStaticParams = () => {
 
   for (let i = 1; i < totalPages; i++) {
     paths.push({
-      params: {
-        page: (i + 1).toString(),
-      },
+      page: (i + 1).toString(),
     });
   }
 

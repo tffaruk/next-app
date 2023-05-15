@@ -1,6 +1,7 @@
 import config from "@/config/config.json";
 import { getListPage } from "@/lib/contentParser";
 import PageHeader from "@/partials/PageHeader";
+import SeoMeta from "@/partials/SeoMeta";
 
 const Contact = async () => {
   const data = getListPage("pages/contact.md");
@@ -10,6 +11,12 @@ const Contact = async () => {
 
   return (
     <>
+      <SeoMeta
+        title={title}
+        meta_title={meta_title}
+        description={description}
+        image={image}
+      />
       <PageHeader title={title} />
       <section className="section-sm">
         <div className="container">
