@@ -1,6 +1,7 @@
 "use client";
 
 import { humanize } from "@/lib/utils/textConverter";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Breadcrumbs = ({ className }: { className?: string }) => {
@@ -32,9 +33,12 @@ const Breadcrumbs = ({ className }: { className?: string }) => {
           <li className="mx-1 capitalize" role="listitem" key={index}>
             {index > 0 && <span className="inlin-block mr-1">/</span>}
             {index !== parts.length - 1 ? (
-              <a className="text-primary dark:text-darkmode-primary" {...attrs}>
+              <Link
+                className="text-primary dark:text-darkmode-primary"
+                {...attrs}
+              >
                 {label}
-              </a>
+              </Link>
             ) : (
               <span className="text-light dark:text-darkmode-light">
                 {label}

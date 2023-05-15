@@ -19,7 +19,7 @@ const BlogCard = ({ data }: { data: any }) => {
         />
       )}
       <h4 className="mb-3">
-        <a href={`/${blog_folder}/${data.slug}`}>{title}</a>
+        <Link href={`/${blog_folder}/${data.slug}`}>{title}</Link>
       </h4>
       <ul className="mb-4">
         <li className="mr-4 inline-block">
@@ -41,12 +41,12 @@ const BlogCard = ({ data }: { data: any }) => {
       <p className="mb-6">
         {plainify(data.content?.slice(0, Number(summary_length)))}
       </p>
-      <a
+      <Link
         className="btn btn-outline-primary btn-sm"
         href={`/${blog_folder}/${data.slug}`}
       >
         read more
-      </a>
+      </Link>
     </div>
   );
 };
