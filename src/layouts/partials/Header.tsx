@@ -121,33 +121,33 @@ const Header = () => {
           ))}
           {navigation_button.enable && (
             <li className="mt-4 inline-block lg:hidden">
-              <a
+              <Link
                 className="btn btn-outline-primary btn-sm"
                 href={navigation_button.link}
               >
                 {navigation_button.label}
-              </a>
+              </Link>
             </li>
           )}
         </ul>
         <div className="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
           {settings.search && (
-            <a
+            <Link
               className="mr-5 inline-block border-r border-border pr-5 text-xl text-dark hover:text-primary dark:border-darkmode-border dark:text-white"
               href="/search"
               aria-label="search"
             >
               <IoSearch />
-            </a>
+            </Link>
           )}
           <ThemeSwitcher className="mr-5" />
           {navigation_button.enable && (
-            <a
+            <Link
               className="btn btn-outline-primary btn-sm hidden lg:inline-block"
               href={navigation_button.link}
             >
               {navigation_button.label}
-            </a>
+            </Link>
           )}
         </div>
       </nav>

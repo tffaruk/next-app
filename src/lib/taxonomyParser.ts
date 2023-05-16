@@ -2,7 +2,7 @@ import { getSinglePage } from "@/lib/contentParser";
 import { slugify } from "@/lib/utils/textConverter";
 
 // get all taxonomies from frontmatter
-export const getTaxonomy = (folder:string, name:string) => {
+export const getTaxonomy = (folder: string, name: string) => {
   const singlePages = getSinglePage(folder);
   const taxonomyPages = singlePages.map((page) => page.frontmatter[name]);
   let taxonomies = [];
@@ -13,7 +13,7 @@ export const getTaxonomy = (folder:string, name:string) => {
     }
   }
   const taxonomy = [...new Set(taxonomies)];
-  
+
   return taxonomy;
 };
 
@@ -27,6 +27,6 @@ export const getAllTaxonomy = (folder: string, name: string) => {
       taxonomies.push(slugify(taxonomyArray[j]));
     }
   }
-  
+
   return taxonomies;
 };

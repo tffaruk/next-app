@@ -124,7 +124,7 @@ img {
 ```javascript
 window.addEventListener("load", (e) => {
   document.querySelector(".preloader").style.display = "none";
-})
+});
 ```
 
 ---

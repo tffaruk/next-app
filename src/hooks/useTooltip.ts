@@ -11,7 +11,7 @@ const useTooltip = () => {
       });
       const length = tooltipEl.length;
       for (let i = 0; i < length; i++) {
-        const attr = tooltipEl[i].getAttribute("data-tooltip")||"";
+        const attr = tooltipEl[i].getAttribute("data-tooltip") || "";
         const x = document.createElement("SPAN");
         const t = document.createTextNode(attr);
         x.appendChild(t);
@@ -23,4 +23,3 @@ const useTooltip = () => {
 };
 
 export default useTooltip;
-

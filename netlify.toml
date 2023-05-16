@@ -1,12 +1,12 @@
-[build]
-publish = ".next"
-command = "yarn build"
+# [build]
+# publish = ".next"
+# command = "yarn build"
 
-[functions]
-included_files = ["src/content/**"]
+# [functions]
+# included_files = ["src/content/**"]
 
-[build.environment]
-NODE_VERSION = "18"
+# [build.environment]
+# NODE_VERSION = "18"
 # NEXT_FORCE_EDGE_IMAGES = true
 
 # [[headers]]

@@ -6,11 +6,13 @@ import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import PageHeader from "@/partials/PageHeader";
 import PostSidebar from "@/partials/PostSidebar";
+import SeoMeta from "@/partials/SeoMeta";
 const { blog_folder, pagination } = config.settings;
 
 // for all regular pages
 const Posts = () => {
   const postIndex = getListPage(`${blog_folder}/_index.md`);
+  const { title, meta_title, description, image } = postIndex.frontmatter;
   const posts = getSinglePage(blog_folder);
   const allCategories = getAllTaxonomy(blog_folder, "categories");
   const categories = getTaxonomy(blog_folder, "categories");
@@ -21,6 +23,12 @@ const Posts = () => {
 
   return (
     <>
+      <SeoMeta
+        title={title}
+        meta_title={meta_title}
+        description={description}
+        image={image}
+      />
       <PageHeader title={postIndex.frontmatter.title} />
       <section className="section">
         <div className="container">

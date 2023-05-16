@@ -3,6 +3,7 @@ import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser";
 import { humanize } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
+import Link from "next/link";
 
 const Categories = () => {
   const { blog_folder } = config.settings;
@@ -22,7 +23,7 @@ const Categories = () => {
               ).length;
               return (
                 <li className="inline-block" key={category}>
-                  <a
+                  <Link
                     href={`/categories/${category}`}
                     className="rounded bg-theme-light px-4 py-2 text-xl text-dark dark:bg-darkmode-theme-light dark:text-darkmode-dark"
                   >
@@ -30,7 +31,7 @@ const Categories = () => {
                     <span className="ml-2 rounded bg-body px-2 dark:bg-darkmode-body">
                       {count}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               );
             })}

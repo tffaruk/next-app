@@ -1,4 +1,5 @@
 import { humanize } from "@/lib/utils/textConverter";
+import Link from "next/link";
 
 const PostSidebar = ({
   tags,
@@ -22,12 +23,12 @@ const PostSidebar = ({
               ).length;
               return (
                 <li key={category}>
-                  <a
+                  <Link
                     className="flex justify-between hover:text-primary dark:hover:text-darkmode-primary"
                     href={`/categories/${category}`}
                   >
                     {humanize(category)} <span>({count})</span>
-                  </a>
+                  </Link>
                 </li>
               );
             })}
@@ -42,12 +43,12 @@ const PostSidebar = ({
             {tags.map((tag: any) => {
               return (
                 <li className="inline-block" key={tag}>
-                  <a
+                  <Link
                     className="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
                     href={`/tags/${tag}`}
                   >
                     {humanize(tag)}
-                  </a>
+                  </Link>
                 </li>
               );
             })}

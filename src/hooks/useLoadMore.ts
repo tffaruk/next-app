@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 // const { loadedItems, loadItemsHandler, loadItemsFinished } = useLoadMore(filteredWebsites,6,mounted);
 // returns {loadedItems, loadItemsHandler, loadItemsFinished}
 
-const useLoadMore = (items: Array<any>, loadPerClick: number, mounted: boolean) => {
+const useLoadMore = (
+  items: Array<any>,
+  loadPerClick: number,
+  mounted: boolean
+) => {
   const [loadedItems, setLoadedItems] = useState<Array<any>>([]);
   const [next, setNext] = useState<number>(loadPerClick);
 
