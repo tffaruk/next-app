@@ -91,7 +91,7 @@ const PostSingle = ({ params }: { params: { single: string } }) => {
                       href={`/categories/${slugify(category)}`}
                     >
                       {humanize(category)}
-                      {index !== categories.length - 1 && ","}
+                      {index !== categories.length - 1 && ", "}
                     </Link>
                   ))}
                 </li>

@@ -15,7 +15,7 @@ export default function RootLayout({
   const sf = theme.fonts.font_family.secondary;
 
   return (
-    <html suppressHydrationWarning={true}>
+    <html suppressHydrationWarning={true} lang="en">
       <head>
         {/* responsive meta */}
         <meta

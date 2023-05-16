@@ -41,6 +41,7 @@ const Home = () => {
                   width="1272"
                   height="403"
                   alt="banner image"
+                  priority
                 />
               </div>
             )}
