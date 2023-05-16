@@ -2,7 +2,6 @@ import MDXContent from "@/components/MDXContent";
 import { getSinglePage } from "@/lib/contentParser";
 import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
-import { notFound } from "next/navigation";
 
 export const generateStaticParams = () => {
   const getRegularPages = getSinglePage("pages");
@@ -25,9 +24,9 @@ const RegularPages = ({ params }: { params: { regular: string } }) => {
   const { frontmatter, content } = data;
   const { title, meta_title, description, image } = frontmatter;
 
-  if (!data) {
-    notFound();
-  }
+  // if (!data) {
+  //   notFound();
+  // }
 
   return (
     <>
