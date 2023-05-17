@@ -4,19 +4,19 @@ import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
 import { notFound } from "next/navigation";
 
-export const generateStaticParams = () => {
-  const getRegularPages = getSinglePage("pages");
+// export const generateStaticParams = () => {
+//   const getRegularPages = getSinglePage("pages");
 
-  const filterRegularPages = getRegularPages.filter(
-    (page: any) => !page.frontmatter.layout
-  );
+//   const filterRegularPages = getRegularPages.filter(
+//     (page: any) => !page.frontmatter.layout
+//   );
 
-  const regularPages = filterRegularPages.map((page: any) => ({
-    regular: page.slug,
-  }));
+//   const regularPages = filterRegularPages.map((page: any) => ({
+//     regular: page.slug,
+//   }));
 
-  return regularPages;
-};
+//   return regularPages;
+// };
 
 // for all regular pages
 const RegularPages = ({ params }: { params: { regular: string } }) => {
