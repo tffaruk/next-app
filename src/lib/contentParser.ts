@@ -5,15 +5,19 @@ const contentPath = "src/content";
 
 // get list page data, ex: _index.md
 export const getListPage = (filePath: string) => {
-  const pageData = fs.readFileSync(path.join(contentPath, filePath), "utf-8");
-  const pageDataParsed = matter(pageData);
-  const content = pageDataParsed.content;
-  const frontmatter = pageDataParsed.data;
+  try {
+    const pageData = fs.readFileSync(path.join(contentPath, filePath), "utf-8");
+    const pageDataParsed = matter(pageData);
+    const content = pageDataParsed.content;
+    const frontmatter = pageDataParsed.data;
 
-  return {
-    frontmatter,
-    content,
-  };
+    return {
+      frontmatter,
+      content,
+    };
+  } catch (error) {
+    return null; // Return an empty object if an error occurs
+  }
 };
 
 // get all single pages, ex: blog/post.md
