@@ -1,3 +1,4 @@
+import TwSizeIndicator from "@/components/TwSizeIndicator";
 import config from "@/config/config.json";
 import theme from "@/config/theme.json";
 import Footer from "@/partials/Footer";
@@ -54,6 +55,7 @@ export default function RootLayout({
       </head>
 
       <body suppressHydrationWarning={true}>
+        <TwSizeIndicator />
         <Providers>
           <Header />
           <main>{children}</main>
