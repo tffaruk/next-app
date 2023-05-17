@@ -10,13 +10,13 @@ import SeoMeta from "@/partials/SeoMeta";
 const { blog_folder, pagination } = config.settings;
 
 // for all regular pages
-const Posts = () => {
+const Posts = async () => {
   const postIndex = getListPage(`${blog_folder}/_index.md`);
   const { title, meta_title, description, image } = postIndex.frontmatter;
-  const posts = getSinglePage(blog_folder);
-  const allCategories = getAllTaxonomy(blog_folder, "categories");
-  const categories = getTaxonomy(blog_folder, "categories");
-  const tags = getTaxonomy(blog_folder, "tags");
+  const posts = await getSinglePage(blog_folder);
+  const allCategories = await getAllTaxonomy(blog_folder, "categories");
+  const categories = await getTaxonomy(blog_folder, "categories");
+  const tags = await getTaxonomy(blog_folder, "tags");
   const sortedPosts = sortByDate(posts);
   const totalPages = Math.ceil(posts.length / pagination);
   const currentPosts = sortedPosts.slice(0, pagination);

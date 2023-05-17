@@ -6,7 +6,7 @@ import SeoMeta from "@/partials/SeoMeta";
 const { blog_folder } = config.settings;
 
 // Retrieve all articles
-const posts = getSinglePage(blog_folder);
+const posts = await getSinglePage(blog_folder);
 
 // List of items to search in
 const searchList = posts.map((item) => ({

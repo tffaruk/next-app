@@ -8,8 +8,8 @@ import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
 const { blog_folder } = config.settings;
 
-export const generateStaticParams = () => {
-  const categories = getTaxonomy(blog_folder, "categories");
+export const generateStaticParams = async () => {
+  const categories = await getTaxonomy(blog_folder, "categories");
 
   const paths = categories.map((category) => ({
     single: category,
@@ -18,8 +18,8 @@ export const generateStaticParams = () => {
   return paths;
 };
 
-const CategorySingle = ({ params }: { params: { single: string } }) => {
-  const posts = getSinglePage(blog_folder);
+const CategorySingle = async ({ params }: { params: { single: string } }) => {
+  const posts = await getSinglePage(blog_folder);
   const filterByCategories = taxonomyFilter(posts, "categories", params.single);
 
   return (

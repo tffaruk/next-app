@@ -4,8 +4,8 @@ import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
 import { notFound } from "next/navigation";
 
-export const generateStaticParams = () => {
-  const getRegularPages = getSinglePage("pages");
+export const generateStaticParams = async () => {
+  const getRegularPages = await getSinglePage("pages");
 
   const filterRegularPages = getRegularPages.filter(
     (page: any) => !page.frontmatter.layout
@@ -19,8 +19,8 @@ export const generateStaticParams = () => {
 };
 
 // for all regular pages
-const RegularPages = ({ params }: { params: { regular: string } }) => {
-  const regularData = getSinglePage("pages");
+const RegularPages = async ({ params }: { params: { regular: string } }) => {
+  const regularData = await getSinglePage("pages");
   const data = regularData.filter((page) => page.slug === params.regular)[0];
 
   if (!data) {

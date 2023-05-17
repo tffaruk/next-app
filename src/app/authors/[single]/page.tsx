@@ -7,8 +7,8 @@ import { getSinglePage } from "@/lib/contentParser";
 import { slugify } from "@/lib/utils/textConverter";
 import SeoMeta from "@/partials/SeoMeta";
 
-export const generateStaticParams = () => {
-  const authors = getSinglePage("authors");
+export const generateStaticParams = async () => {
+  const authors = await getSinglePage("authors");
 
   const paths = authors.map((author) => ({
     single: author.slug,
@@ -17,13 +17,13 @@ export const generateStaticParams = () => {
   return paths;
 };
 
-const AuthorSingle = ({ params }: { params: { single: string } }) => {
-  const authors = getSinglePage("authors");
+const AuthorSingle = async ({ params }: { params: { single: string } }) => {
+  const authors = await getSinglePage("authors");
   const author = authors.filter((page) => page.slug === params.single)[0];
   const { frontmatter, content } = author;
   const { title, social, meta_title, description, image } = frontmatter;
   const { blog_folder } = config.settings;
-  const posts = getSinglePage(blog_folder);
+  const posts = await getSinglePage(blog_folder);
   const postFilterByAuthor = posts.filter(
     (post) => slugify(post.frontmatter.author) === slugify(title)
   );

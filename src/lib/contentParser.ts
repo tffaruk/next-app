@@ -17,13 +17,13 @@ export const getListPage = (filePath: string) => {
 };
 
 // get all single pages, ex: blog/post.md
-export const getSinglePage = (folder: string) => {
+export const getSinglePage = async (folder: string) => {
   const filesPath = fs.readdirSync(path.join(contentPath, folder));
   const sanitizeFiles = filesPath.filter((file) => file.endsWith(".md"));
-  const filterSingleFiles = sanitizeFiles.filter((file) =>
+  const filterSinglePages = sanitizeFiles.filter((file) =>
     file.match(/^(?!_)/)
   );
-  const singlePages = filterSingleFiles.map((filename) => {
+  const singlePages = filterSinglePages.map((filename) => {
     const slug = filename.replace(".md", "");
     const pageData = fs.readFileSync(
       path.join(contentPath, folder, filename),
