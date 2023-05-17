@@ -18,8 +18,8 @@ import {
 } from "react-icons/fa/index.js";
 const { blog_folder } = config.settings;
 
-export const generateStaticParams = async () => {
-  const posts = await getSinglePage(blog_folder);
+export const generateStaticParams = () => {
+  const posts = getSinglePage(blog_folder);
 
   const paths = posts.map((post) => ({
     single: post.slug,
@@ -28,8 +28,8 @@ export const generateStaticParams = async () => {
   return paths;
 };
 
-const PostSingle = async ({ params }: { params: { single: string } }) => {
-  const posts = await getSinglePage(blog_folder);
+const PostSingle = ({ params }: { params: { single: string } }) => {
+  const posts = getSinglePage(blog_folder);
   const post = posts.filter((page) => page.slug === params.single)[0];
 
   if (!post) {

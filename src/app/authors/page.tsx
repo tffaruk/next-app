@@ -3,9 +3,9 @@ import { getListPage, getSinglePage } from "@/lib/contentParser";
 import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
 
-const Authors = async () => {
+const Authors = () => {
   const authorIndex = getListPage("authors/_index.md");
-  const authors = await getSinglePage("authors");
+  const authors = getSinglePage("authors");
   const { title, meta_title, description, image } = authorIndex.frontmatter;
   return (
     <>

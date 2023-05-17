@@ -5,10 +5,10 @@ import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
 import Link from "next/link";
 
-const tags = async () => {
+const tags = () => {
   const { blog_folder } = config.settings;
-  const tags = await getTaxonomy(blog_folder, "tags");
-  const alltags = await getAllTaxonomy(blog_folder, "tags");
+  const tags = getTaxonomy(blog_folder, "tags");
+  const alltags = getAllTaxonomy(blog_folder, "tags");
 
   return (
     <>

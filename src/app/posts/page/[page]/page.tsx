@@ -9,8 +9,8 @@ import PostSidebar from "@/partials/PostSidebar";
 import SeoMeta from "@/partials/SeoMeta";
 const { blog_folder, pagination } = config.settings;
 
-export const generateStaticParams = async () => {
-  const allPost = await getSinglePage(blog_folder);
+export const generateStaticParams = () => {
+  const allPost = getSinglePage(blog_folder);
   const allSlug = allPost.map((item) => item.slug);
   const totalPages = Math.ceil(allSlug.length / pagination);
   let paths = [];
@@ -25,13 +25,13 @@ export const generateStaticParams = async () => {
 };
 
 // for all regular pages
-const Posts = async ({ params }: { params: { page: string } }) => {
+const Posts = ({ params }: { params: { page: string } }) => {
   const postIndex = getListPage(`${blog_folder}/_index.md`);
   const { title, meta_title, description, image } = postIndex.frontmatter;
-  const posts = await getSinglePage(blog_folder);
-  const allCategories = await getAllTaxonomy(blog_folder, "categories");
-  const categories = await getTaxonomy(blog_folder, "categories");
-  const tags = await getTaxonomy(blog_folder, "tags");
+  const posts = getSinglePage(blog_folder);
+  const allCategories = getAllTaxonomy(blog_folder, "categories");
+  const categories = getTaxonomy(blog_folder, "categories");
+  const tags = getTaxonomy(blog_folder, "tags");
   const sortedPosts = sortByDate(posts);
   const totalPages = Math.ceil(posts.length / pagination);
   const currentPage =

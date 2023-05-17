@@ -5,10 +5,10 @@ import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
 import Link from "next/link";
 
-const Categories = async () => {
+const Categories = () => {
   const { blog_folder } = config.settings;
-  const categories = await getTaxonomy(blog_folder, "categories");
-  const allCategories = await getAllTaxonomy(blog_folder, "categories");
+  const categories = getTaxonomy(blog_folder, "categories");
+  const allCategories = getAllTaxonomy(blog_folder, "categories");
 
   return (
     <>
