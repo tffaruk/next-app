@@ -20,12 +20,13 @@ export const generateStaticParams = () => {
 
 const AuthorSingle = ({ params }: { params: { single: string } }) => {
   const authors = getSinglePage("authors");
-  const author = authors.filter((page) => page.slug === params.single)[0];
-
-  if (author.notFound) {
+  if (authors[0].notFound) {
     notFound();
   }
-
+  const author = authors.filter((page) => page.slug === params.single)[0];
+  if (!author) {
+    notFound();
+  }
   const { frontmatter, content } = author;
   const { title, social, meta_title, description, image } = frontmatter;
   const { blog_folder } = config.settings;

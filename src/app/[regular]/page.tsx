@@ -25,6 +25,9 @@ const RegularPages = ({ params }: { params: { regular: string } }) => {
     notFound();
   }
   const data = regularData.filter((page) => page.slug === params.regular)[0];
+  if (!data) {
+    notFound();
+  }
   const { frontmatter, content } = data;
   const { title, meta_title, description, image } = frontmatter;
 
