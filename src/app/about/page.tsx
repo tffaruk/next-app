@@ -4,7 +4,7 @@ import { getListPage } from "@/lib/contentParser";
 import { markdownify } from "@/lib/utils/textConverter";
 import SeoMeta from "@/partials/SeoMeta";
 
-const About = async () => {
+const About = () => {
   const data = getListPage("pages/about.md");
   const { frontmatter, content } = data;
   const { title, meta_title, description, image } = frontmatter;

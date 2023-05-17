@@ -25,7 +25,7 @@ const RegularPages = ({ params }: { params: { regular: string } }) => {
 
   const data = getListPage(`pages/${params.regular}.md`);
 
-  if (!data) {
+  if (data.notFound) {
     notFound();
   }
 

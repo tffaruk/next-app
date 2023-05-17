@@ -12,11 +12,16 @@ export const getListPage = (filePath: string) => {
     const frontmatter = pageDataParsed.data;
 
     return {
+      notFound: false,
       frontmatter,
       content,
     };
   } catch (error) {
-    return null; // Return an empty object if an error occurs
+    return {
+      notFound: true,
+      frontmatter: {},
+      content: "",
+    }; // Return an empty object if an error occurs
   }
 };
 
