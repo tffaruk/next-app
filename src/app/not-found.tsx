@@ -1,7 +1,6 @@
 import ImageFallback from "@/components/ImageFallback";
 import MDXContent from "@/components/MDXContent";
 import { getListPage } from "@/lib/contentParser";
-import { markdownify } from "@/lib/utils/textConverter";
 import SeoMeta from "@/partials/SeoMeta";
 import Link from "next/link";
 
@@ -29,10 +28,7 @@ const NotFound = () => {
                 height={320}
                 width={630}
               />
-              <h1
-                className="h2 mb-4"
-                dangerouslySetInnerHTML={markdownify(frontmatter.title)}
-              />
+              <h1 className="h2 mb-4">{frontmatter.title}</h1>
               <div className="content">
                 <MDXContent content={content} />
               </div>
