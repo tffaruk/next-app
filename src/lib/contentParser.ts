@@ -7,21 +7,26 @@ const contentPath = "src/content";
 export const getListPage = (filePath: string) => {
   try {
     const pageData = fs.readFileSync(path.join(contentPath, filePath), "utf-8");
+    const slug = pageData.replace(".md", "");
     const pageDataParsed = matter(pageData);
     const content = pageDataParsed.content;
     const frontmatter = pageDataParsed.data;
+    const url = frontmatter.url ? frontmatter.url.replace("/", "") : slug;
 
     return {
       notFound: false,
+      slug: url,
       frontmatter,
       content,
     };
+    
   } catch (error) {
     return {
       notFound: true,
+      slug: "",
       frontmatter: {},
       content: "",
-    }; // Return an empty object if an error occurs
+    };
   }
 };
 
@@ -34,16 +39,33 @@ export const getSinglePage = (folder: string) => {
   );
   const singlePages = filterSingleFiles.map((filename) => {
     const slug = filename.replace(".md", "");
-    const pageData = fs.readFileSync(
-      path.join(contentPath, folder, filename),
-      "utf-8"
-    );
-    const pageDataParsed = matter(pageData);
-    const frontmatterString = JSON.stringify(pageDataParsed.data);
-    const frontmatter = JSON.parse(frontmatterString);
-    const content = pageDataParsed.content;
-    const url = frontmatter.url ? frontmatter.url.replace("/", "") : slug;
-    return { frontmatter: frontmatter, slug: url, content: content };
+
+    try {
+      const pageData = fs.readFileSync(
+        path.join(contentPath, folder, filename),
+        "utf-8"
+      );
+      const pageDataParsed = matter(pageData);
+      const frontmatterString = JSON.stringify(pageDataParsed.data);
+      const frontmatter = JSON.parse(frontmatterString);
+      const content = pageDataParsed.content;
+      const url = frontmatter.url ? frontmatter.url.replace("/", "") : slug;
+
+      return { 
+        notFound: false,
+        frontmatter: frontmatter,
+        slug: url,
+        content: content
+      };
+
+    } catch (error) {
+      return { 
+        notFound: true,
+        frontmatter: {},
+        slug: "",
+        content: ""
+      };
+    }
   });
 
   const publishedPages = singlePages.filter(

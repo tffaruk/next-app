@@ -32,7 +32,7 @@ const PostSingle = ({ params }: { params: { single: string } }) => {
   const posts = getSinglePage(blog_folder);
   const post = posts.filter((page) => page.slug === params.single)[0];
 
-  if (!post) {
+  if (post.notFound) {
     notFound();
   }
 

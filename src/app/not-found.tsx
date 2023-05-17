@@ -1,22 +1,12 @@
 import ImageFallback from "@/components/ImageFallback";
 import MDXContent from "@/components/MDXContent";
-import { getListPage } from "@/lib/contentParser";
 import SeoMeta from "@/partials/SeoMeta";
 import Link from "next/link";
 
 const NotFound = () => {
-  const data = getListPage("pages/404.md");
-  const { frontmatter, content } = data;
-  const { title, meta_title, description, image } = frontmatter;
-
   return (
     <>
-      <SeoMeta
-        title={title}
-        meta_title={meta_title}
-        description={description}
-        image={image}
-      />
+      <SeoMeta title={"Page Not Found"} image={"/images/404.png"} />
       <section className="section-sm">
         <div className="container">
           <div className="row justify-center">
@@ -28,9 +18,13 @@ const NotFound = () => {
                 height={320}
                 width={630}
               />
-              <h1 className="h2 mb-4">{frontmatter.title}</h1>
+              <h1 className="h2 mb-4">Something Went Wrong!</h1>
               <div className="content">
-                <MDXContent content={content} />
+                <MDXContent
+                  content={
+                    "This page doesn't exist or has been removed, <br /> we suggest you go back to Home."
+                  }
+                />
               </div>
               <Link href="/" className="btn btn-primary mt-8">
                 Back To Home
