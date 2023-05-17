@@ -8,7 +8,11 @@ const Providers = ({ children }: { children: ReactNode }) => {
   const { default_theme } = config.settings;
 
   return (
-    <ThemeProvider attribute="class" defaultTheme={default_theme}>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme={default_theme}
+      enableColorScheme={false}
+    >
       {children}
     </ThemeProvider>
   );
