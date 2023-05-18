@@ -30,9 +30,9 @@ const Posts = ({ params }: { params: { page: number } }) => {
   const postIndex = getListPage(`${blog_folder}/_index.md`);
   const { title, meta_title, description, image } = postIndex.frontmatter;
   const posts = getSinglePage(blog_folder);
-  if (posts[0].notFound) {
-    notFound();
-  }
+  // if (posts[0].notFound) {
+  //   notFound();
+  // }
   const allCategories = getAllTaxonomy(blog_folder, "categories");
   const categories = getTaxonomy(blog_folder, "categories");
   const tags = getTaxonomy(blog_folder, "tags");

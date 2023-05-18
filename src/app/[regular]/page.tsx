@@ -21,13 +21,9 @@ export const generateStaticParams = () => {
 // for all regular pages
 const RegularPages = ({ params }: { params: { regular: string } }) => {
   const regularData = getSinglePage("pages");
-  if (regularData[0].notFound) {
-    notFound();
-  }
+  regularData[0].notFound && notFound();
   const data = regularData.filter((page) => page.slug === params.regular)[0];
-  if (!data) {
-    notFound();
-  }
+  !data && notFound();
   const { frontmatter, content } = data;
   const { title, meta_title, description, image } = frontmatter;
 
