@@ -6,6 +6,7 @@ import taxonomyFilter from "@/lib/utils/taxonomyFilter";
 import { humanize } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
+import { notFound } from "next/navigation";
 const { blog_folder } = config.settings;
 
 export const generateStaticParams = () => {
@@ -20,7 +21,9 @@ export const generateStaticParams = () => {
 
 const TagSingle = ({ params }: { params: { single: string } }) => {
   const posts = getSinglePage(blog_folder);
+  posts[0].notFound && notFound();
   const filterByTags = taxonomyFilter(posts, "tags", params.single);
+  filterByTags.length < 1 && notFound();
 
   return (
     <>
