@@ -22,7 +22,7 @@ export const generateStaticParams = () => {
 const CategorySingle = ({ params }: { params: { single: string } }) => {
   const posts = getSinglePage(blog_folder);
   const filterByCategories = taxonomyFilter(posts, "categories", params.single);
-  filterByCategories.length === 0 && notFound();
+  filterByCategories.length < 1 && notFound();
 
   return (
     <>
