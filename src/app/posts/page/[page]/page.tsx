@@ -7,6 +7,7 @@ import { sortByDate } from "@/lib/utils/sortFunctions";
 import PageHeader from "@/partials/PageHeader";
 import PostSidebar from "@/partials/PostSidebar";
 import SeoMeta from "@/partials/SeoMeta";
+import { notFound } from "next/navigation";
 const { blog_folder, pagination } = config.settings;
 
 export const generateStaticParams = () => {
@@ -25,10 +26,13 @@ export const generateStaticParams = () => {
 };
 
 // for all regular pages
-const Posts = ({ params }: { params: { page: string } }) => {
+const Posts = ({ params }: { params: { page: number } }) => {
   const postIndex = getListPage(`${blog_folder}/_index.md`);
   const { title, meta_title, description, image } = postIndex.frontmatter;
   const posts = getSinglePage(blog_folder);
+  if (posts[0].notFound) {
+    notFound();
+  }
   const allCategories = getAllTaxonomy(blog_folder, "categories");
   const categories = getTaxonomy(blog_folder, "categories");
   const tags = getTaxonomy(blog_folder, "tags");
@@ -39,6 +43,20 @@ const Posts = ({ params }: { params: { page: string } }) => {
   const indexOfLastPost = currentPage * pagination;
   const indexOfFirstPost = indexOfLastPost - pagination;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+  function createArrayFromNumber(num: number) {
+    let numArr = [];
+
+    for (let i = 2; i <= num; i++) {
+      numArr.push(i);
+    }
+
+    return numArr;
+  }
+
+  if (!createArrayFromNumber(totalPages).includes(Number(params.page))) {
+    notFound();
+  }
 
   return (
     <>
