@@ -25,14 +25,21 @@ export const generateStaticParams = () => {
   return paths;
 };
 
+function spreadPages(num: number) {
+  let pages = [];
+
+  for (let i = 2; i <= num; i++) {
+    pages.push(i);
+  }
+
+  return pages;
+}
+
 // for all regular pages
 const Posts = ({ params }: { params: { page: number } }) => {
   const postIndex = getListPage(`${blog_folder}/_index.md`);
   const { title, meta_title, description, image } = postIndex.frontmatter;
   const posts = getSinglePage(blog_folder);
-  // if (posts[0].notFound) {
-  //   notFound();
-  // }
   const allCategories = getAllTaxonomy(blog_folder, "categories");
   const categories = getTaxonomy(blog_folder, "categories");
   const tags = getTaxonomy(blog_folder, "tags");
@@ -44,19 +51,7 @@ const Posts = ({ params }: { params: { page: number } }) => {
   const indexOfFirstPost = indexOfLastPost - pagination;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-  function createArrayFromNumber(num: number) {
-    let numArr = [];
-
-    for (let i = 2; i <= num; i++) {
-      numArr.push(i);
-    }
-
-    return numArr;
-  }
-
-  if (!createArrayFromNumber(totalPages).includes(Number(params.page))) {
-    notFound();
-  }
+  !spreadPages(totalPages).includes(Number(params.page)) && notFound();
 
   return (
     <>

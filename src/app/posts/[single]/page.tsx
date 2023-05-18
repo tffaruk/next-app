@@ -30,13 +30,9 @@ export const generateStaticParams = () => {
 
 const PostSingle = ({ params }: { params: { single: string } }) => {
   const posts = getSinglePage(blog_folder);
-  if (posts[0].notFound) {
-    notFound();
-  }
+  posts[0].notFound && notFound();
   const post = posts.filter((page) => page.slug === params.single)[0];
-  if (!post) {
-    notFound();
-  }
+  !post && notFound();
 
   const { frontmatter, content } = post;
   const {
